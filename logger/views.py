@@ -38,8 +38,6 @@ def add_peer(request):
 
 		if 'torrent_hash' in params:
 			t = Torrent.objects.get(torrent_hash = params['torrent_hash'])
-
-			a = Activity()
 			if Activity.objects.filter(peer = p, torrent = t):
 				pass
 			else:
@@ -51,7 +49,8 @@ def add_peer(request):
 					flags = params['flags'],
 					downloaded = params['downloaded'],
 					)
-			a.save()
+				a.save()
+				
 	return HttpResponse(status=200)
 
 
