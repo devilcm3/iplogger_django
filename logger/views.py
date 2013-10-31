@@ -32,6 +32,7 @@ def add_peer(request):
 				ip_address	= params['ip_address'],
 				country 	= ( params['country'] if 'country' in params else '' ),
 				client_type = ( params['client_type'] if 'client_type' in params else '' ),
+				host 		= ( params['host'] if 'host' in params else '' ),
 			)
 			p.save()
 
@@ -46,7 +47,9 @@ def add_peer(request):
 					peer = p,
 					torrent = t,
 					download_speed = params['download_speed'],
-					upload_speed = params['upload_speed']
+					upload_speed = params['upload_speed'],
+					flags = params['flags'],
+					downloaded = params['downloaded'],
 					)
 			a.save()
 	return HttpResponse(status=200)
